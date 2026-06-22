@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentHub - Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
+
+    <div class="flex min-h-screen">
+
+        <aside class="w-64 bg-slate-900 text-slate-200 fixed inset-y-0 left-0 flex flex-col z-20 shadow-xl">
+            <div class="p-6 border-b border-slate-800 flex items-center space-x-3">
+                <div class="h-8 w-8 bg-indigo-500 rounded-lg flex items-center justify-center font-bold text-white shadow-md shadow-indigo-500/30">A</div>
+                <span class="text-xl font-bold tracking-wider text-white">Agent<span class="text-indigo-400">Hub</span></span>
+            </div>
+            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 bg-indigo-600 text-white shadow-md shadow-indigo-600/10">
+                    <span>📊 Dashboard</span>
+                </button>
+                <button onclick="switchTab('usuarios')" id="nav-usuarios" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    <span>👥 Gestión de Usuarios</span>
+                </button>
+                <button onclick="switchTab('agentes')" id="nav-agentes" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    <span>🤖 Gestión de Agentes</span>
+                </button>
+                <button onclick="switchTab('skills')" id="nav-skills" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    <span>⚡ Catálogo de Skills</span>
+                </button>
+                <button onclick="switchTab('contrataciones')" id="nav-contrataciones" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    <span>💼 Contrataciones</span>
+                </button>
+                <button onclick="switchTab('errores')" id="nav-errores" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 text-slate-400 hover:bg-slate-800 hover:text-white">
+                    <span>⚠️ Log de Errores</span>
+                </button>
+            </nav>
+            <div class="p-4 border-t border-slate-800 text-xs text-slate-500 text-center">
+                AgentHub Admin v1.0.0 (Hardcodeado)
+            </div>
+        </aside>
+
+        <div class="flex-1 pl-64 flex flex-col min-h-screen">
+
+            <header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10 shadow-xs">
+                <h1 id="topbar-title" class="text-xl font-bold text-slate-800 dark:text-white">Dashboard</h1>
+                
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs text-slate-500 font-medium">Modo Claro</span>
+                    <button onclick="toggleDarkMode()" class="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-300 dark:bg-indigo-600 transition-colors duration-200 focus:outline-none">
+                        <span id="dark-mode-dot" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 translate-x-1 dark:translate-x-6"></span>
+                    </button>
+                    <span class="text-xs text-slate-400 font-medium">Modo Oscuro</span>
+                </div>
+            </header>
+
+            <main class="flex-1 p-8">
+
+                <section id="section-dashboard" class="tab-content space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-100 dark:border-slate-800 relative overflow-hidden">
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ingresos Totales (Mes)</p>
+                            <h3 class="text-2xl font-bold text-emerald-500 mt-2">$45,280.00</h3>
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-emerald-500"></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-100 dark:border-slate-800 relative overflow-hidden">
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Pérdida por Descuentos</p>
+                            <h3 class="text-2xl font-bold text-rose-500 mt-2">$3,150.00</h3>
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-rose-500"></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-100 dark:border-slate-800 relative overflow-hidden">
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Agentes Activos</p>
+                            <h3 class="text-2xl font-bold text-blue-500 mt-2">1,240</h3>
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-blue-500"></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xs border border-slate-100 dark:border-slate-800 relative overflow-hidden">
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Agentes Fallando</p>
+                            <h3 class="text-2xl font-bold text-amber-500 mt-2">14</h3>
+                            <div class="absolute bottom-0 inset-x-0 h-1 bg-amber-500"></div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs">
+                        <h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Actividad Semanal de Ejecuciones</h4>
+                        <div class="w-full h-64 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-lg flex items-center justify-center bg-slate-50 dark:bg-slate-950/50">
+                            <span class="text-sm font-medium text-slate-400 tracking-wide">[ Marcador de Posición: Gráfico Analítico Semanal ]</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-usuarios" class="tab-content hidden">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800/50 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
+                                    <th class="p-4">Nombre</th>
+                                    <th class="p-4">Email</th>
+                                    <th class="p-4">Plan</th>
+                                    <th class="p-4">Estado</th>
+                                    <th class="p-4 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+                                    <td class="p-4 font-medium">Acme Corp Ltd</td>
+                                    <td class="p-4 text-slate-500">billing@acme.com</td>
+                                    <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">Enterprise</span></td>
+                                    <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">Activo</span></td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'drop-u1')" class="px-2 py-1 text-slate-500 hover:text-slate-800 dark:hover:text-white font-bold text-lg">⋮</button>
+                                        <div id="drop-u1" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                            <button onclick="openModal('modal-usuario')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">👁️ Ver detalle</button>
+                                            <button onclick="alert('Registro eliminado (Simulado)')" class="w-full px-4 py-2 text-xs text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 font-medium">🗑️ Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="section-agentes" class="tab-content hidden">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800/50 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
+                                    <th class="p-4">Agente</th>
+                                    <th class="p-4">Propietario</th>
+                                    <th class="p-4">Estado</th>
+                                    <th class="p-4">Habilidades</th>
+                                    <th class="p-4 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+                                    <td class="p-4 font-medium flex items-center space-x-2">
+                                        <span>CyberScribe v4</span>
+                                    </td>
+                                    <td class="p-4 text-slate-500">Stark Industries</td>
+                                    <td class="p-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"><span class="w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5"></span>Fallando</span></td>
+                                    <td class="p-4">
+                                        <button onclick="toggleCollapse('skills-c1')" class="text-xs text-indigo-500 hover:underline font-medium focus:outline-none">Ver Habilidades ▼</button>
+                                        <div id="skills-c1" class="hidden mt-2 transition-all duration-300 ease-in-out flex flex-wrap gap-1.5 max-w-xs">
+                                            <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs text-slate-600 dark:text-slate-400">Web Scraper</span>
+                                            <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs text-slate-600 dark:text-slate-400">PDF Reader</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'drop-a1')" class="px-2 py-1 text-slate-500 hover:text-slate-800 dark:hover:text-white font-bold text-lg">⋮</button>
+                                        <div id="drop-a1" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                            <button onclick="openModal('modal-agente')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">⚙️ Configurar</button>
+                                            <button onclick="alert('Agente eliminado (Simulado)')" class="w-full px-4 py-2 text-xs text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 font-medium">🗑️ Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="section-skills" class="tab-content hidden space-y-6">
+                    <div class="p-4 bg-indigo-50 dark:bg-slate-800/40 border border-indigo-100 dark:border-indigo-950 rounded-xl text-sm text-indigo-800 dark:text-indigo-300">
+                        💡 <strong>¿Qué es una Skill?</strong> En el ecosistema de AgentHub, representan capacidades modulares encapsuladas (herramientas de lectura, Web APIs, integraciones secundarias) que se inyectan a un agente para expandir su alcance de negocio de forma autónoma.
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 relative flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-bold text-base text-slate-900 dark:text-white">Web Scraper Tool</h4>
+                                    <div class="relative">
+                                        <button onclick="toggleDropdown(event, 'drop-s1')" class="text-slate-400 hover:text-slate-600 font-bold">⋮</button>
+                                        <div id="drop-s1" class="dropdown-menu hidden absolute right-0 mt-1 w-32 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                            <button onclick="alert('Detalle de firma de función (Simulado)')" class="w-full px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700">👁️ Detalles</button>
+                                            <button onclick="alert('Eliminado')" class="w-full px-3 py-1.5 text-xs text-rose-500 hover:bg-rose-50">🗑️ Eliminar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Navegación automatizada y parseo estricto de estructuras de datos web concurrentes.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs">
+                                <span class="text-slate-400">Agentes habilitados:</span>
+                                <span class="font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded-md">142</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-contrataciones" class="tab-content hidden">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800/50 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
+                                    <th class="p-4">Cliente</th>
+                                    <th class="p-4">Agente</th>
+                                    <th class="p-4">Skills Activas</th>
+                                    <th class="p-4">Ventana Temporal</th>
+                                    <th class="p-4">Total Abonado</th>
+                                    <th class="p-4 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+                                    <td class="p-4 font-medium">Stark Industries</td>
+                                    <td class="p-4 text-slate-600 dark:text-slate-400">CyberScribe v4</td>
+                                    <td class="p-4"><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">2 Skills</span></td>
+                                    <td class="p-4 text-xs text-slate-500">01/06/2026 - Presente</td>
+                                    <td class="p-4 font-semibold text-emerald-600 dark:text-emerald-400">$1,450.00</td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'drop-c1')" class="px-2 py-1 text-slate-500 hover:text-slate-800 dark:hover:text-white font-bold text-lg">⋮</button>
+                                        <div id="drop-c1" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                            <button onclick="openModal('modal-contrato')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🧾 Ver detalle</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="section-errores" class="tab-content hidden">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800/50 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
+                                    <th class="p-4">Timestamp</th>
+                                    <th class="p-4">Agente</th>
+                                    <th class="p-4">Severidad / Tipo</th>
+                                    <th class="p-4">Descripción Corta</th>
+                                    <th class="p-4 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+                                    <td class="p-4 text-xs text-slate-400 font-mono">2026-06-21 23:44:12</td>
+                                    <td class="p-4 font-medium">CyberScribe v4</td>
+                                    <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900">Fatal / Crash</span></td>
+                                    <td class="p-4 text-slate-500 max-w-xs truncate">403 Forbidden on Web Scraping execution trace sequence.</td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'drop-e1')" class="px-2 py-1 text-slate-500 hover:text-slate-800 dark:hover:text-white font-bold text-lg">⋮</button>
+                                        <div id="drop-e1" class="dropdown-menu hidden absolute right-4 mt-1 w-38 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                            <button onclick="openModal('modal-error')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🔍 Ver Stacktrace</button>
+                                            <button onclick="alert('Marcado como resuelto')" class="w-full px-4 py-2 text-xs text-emerald-500 hover:bg-emerald-50 font-medium">✓ Resolver</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <div id="modal-usuario" class="modal-overlay hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-usuario')">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transform transition-all">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                <h3 class="font-bold text-lg">Expediente de Usuario</h3>
+                <button onclick="closeModal('modal-usuario')" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
+            </div>
+            <div class="p-6 space-y-3 text-sm">
+                <p><strong>ID Cliente:</strong> <span class="font-mono text-xs text-slate-400">usr_99120a3x</span></p>
+                <p><strong>Volumen Tokens Consumidos:</strong> 12,405,120 Tokens</p>
+                <p><strong>Pasarela de Pago ID:</strong> stripe_ch_3M7s21</p>
+                <p><strong>Fecha de Registro:</strong> 14 de Enero, 2026</p>
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 text-right">
+                <button onclick="closeModal('modal-usuario')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Cerrar Ventana</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-agente" class="modal-overlay hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-agente')">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-lg w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transform transition-all">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                <h3 class="font-bold text-lg">Auditoría: System Prompt</h3>
+                <button onclick="closeModal('modal-agente')" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
+            </div>
+            <div class="p-6">
+                <textarea readonly class="w-full h-36 p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-mono text-slate-500 focus:outline-none resize-none">You are CyberScribe v4, an autonomous agent trained strictly for web crawling and intelligence scraping operations. You must restrict all data collection pathways to targeted criteria fields and abort connections immediately upon receiving 403 authorization headers.</textarea>
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 text-right">
+                <button onclick="closeModal('modal-agente')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-contrato" class="modal-overlay hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-contrato')">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transform transition-all">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                <h3 class="font-bold text-lg">Desglose de Facturación</h3>
+                <button onclick="closeModal('modal-contrato')" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
+            </div>
+            <div class="p-6 space-y-4 text-sm">
+                <div class="flex justify-between border-b border-slate-100 pb-2">
+                    <span class="text-slate-400">Alquiler Base Core (Agente):</span>
+                    <span class="font-mono font-medium">$1,000.00</span>
+                </div>
+                <div class="flex justify-between text-xs text-slate-500 pl-2">
+                    <span>+ Habilidad: Web Scraper Tool</span>
+                    <span class="font-mono">$250.00</span>
+                </div>
+                <div class="flex justify-between text-xs text-slate-500 pl-2 border-b border-slate-100 pb-2">
+                    <span>+ Habilidad: PDF Reader Core</span>
+                    <span class="font-mono">$200.00</span>
+                </div>
+                <div class="flex justify-between font-bold text-base pt-2">
+                    <span>Total Consolidado:</span>
+                    <span class="text-emerald-500">$1,450.00</span>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 text-right">
+                <button onclick="closeModal('modal-contrato')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-error" class="modal-overlay hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-error')">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-xl w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transform transition-all">
+            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                <h3 class="font-bold text-lg">Excepción: Stacktrace Completo</h3>
+                <button onclick="closeModal('modal-error')" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
+            </div>
+            <div class="p-6 bg-slate-950 text-red-400 font-mono text-xs p-4 rounded-lg m-6 overflow-x-auto max-h-60 border border-red-950">
+                RuntimeError: Exception thrown on execution thread [Id: 441]<br>
+                &nbsp;&nbsp;at src/core/scraper.ts:142:19<br>
+                &nbsp;&nbsp;at processTicksAndRejections (node:internal/process/task_queues:95:5)<br>
+                &nbsp;&nbsp;at async AgentRunner.executeAction (src/runtime/runner.ts:88:9)<br>
+                &nbsp;&nbsp;Status Code: 403 (Forbidden) -> Scrape Target Blocked Request.
+            </div>
+            <div class="p-4 bg-slate-50 dark:bg-slate-800/50 text-right">
+                <button onclick="closeModal('modal-error')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Cerrar Diagnóstico</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // 1. MANEJO DEL MODO OSCURO
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const dot = document.getElementById('dark-mode-dot');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                dot.classList.remove('translate-x-6');
+                dot.classList.add('translate-x-1');
+            } else {
+                html.classList.add('dark');
+                dot.classList.remove('translate-x-1');
+                dot.classList.add('translate-x-6');
+            }
+        }
+
+        // 2. CAMBIO DE PANELES / VISTAS (TABS)
+        function switchTab(tabId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.tab-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Remover estilos activos de todos los botones de navegación
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/10');
+                btn.classList.add('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+            });
+
+            // Mostrar sección activa
+            document.getElementById(`section-${tabId}`).classList.remove('hidden');
+            
+            // Aplicar estilos de foco al botón seleccionado
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            activeBtn.classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+            activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/10');
+
+            // Actualizar título de la barra superior
+            const titles = {
+                dashboard: 'Dashboard Analítico',
+                usuarios: 'Gestión Operativa de Usuarios',
+                agentes: 'Administración de Flota de Agentes',
+                skills: 'Catálogo Global de Skills',
+                contrataciones: 'Contratos y Auditoría de Alquiler',
+                errores: 'Consola de Log de Errores'
+            };
+            document.getElementById('topbar-title').innerText = titles[tabId];
+        }
+
+        // 3. AISLAMIENTO E INTERACTIVIDAD DE DROPDOWNS (⋮)
+        function toggleDropdown(event, dropdownId) {
+            event.stopPropagation(); // Evita que el click se propague y cierre el menú de inmediato
+            
+            const targetMenu = document.getElementById(dropdownId);
+            const wasHidden = targetMenu.classList.contains('hidden');
+            
+            // Cerrar absolutamente todos los dropdowns abiertos primero
+            closeAllDropdowns();
+            
+            // Si estaba oculto, abrir únicamente este
+            if (wasHidden) {
+                targetMenu.classList.remove('hidden');
+            }
+        }
+
+        function closeAllDropdowns() {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.add('hidden');
+            });
+        }
+
+        // 4. SECCIÓN COLAPSABLE (TRANSICIÓN DE SKILLS EN AGENTES)
+        function toggleCollapse(collapseId) {
+            const container = document.getElementById(collapseId);
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                container.classList.add('flex');
+            } else {
+                container.classList.remove('flex');
+                container.classList.add('hidden');
+            }
+        }
+
+        // 5. SISTEMA OPERATIVO DE MODALES (OPEN/CLOSE)
+        function openModal(modalId) {
+            closeAllDropdowns(); // Evita que queden menús flotando atrás
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function closeModalOnBackdrop(event, modalId) {
+            // Cerrar únicamente si el clic se hace en la capa oscura de fondo (backdrop)
+            if (event.target === document.getElementById(modalId)) {
+                closeModal(modalId);
+            }
+        }
+
+        // Event listener global para cerrar dropdowns si se hace clic fuera de ellos
+        document.addEventListener('click', function() {
+            closeAllDropdowns();
+        });
+    </script>
+</body>
+</html>
