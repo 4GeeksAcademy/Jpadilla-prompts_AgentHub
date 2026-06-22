@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgentHub - Admin Dashboard</title>
+    <script>
+        const twStyle = document.createElement('style');
+        twStyle.type = 'text/tailwindcss';
+        twStyle.textContent = '@custom-variant dark (&:where(.dark, .dark *));';
+        document.head.appendChild(twStyle);
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
@@ -24,7 +30,7 @@
             </div>
             
             <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 bg-indigo-600 text-white shadow-md shadow-indigo-600/10">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150 bg-indigo-600 text-white shadow-md">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4"></path></svg>
                     <span>Dashboard</span>
                 </button>
@@ -283,12 +289,12 @@
                                     </tr>
                                     <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
                                         <td class="p-4 font-semibold">LogiBot Prime</td>
-                                        <td class="p-4 text-slate-500 dark:text-slate-400">Cyberdyne Systems</td>
-                                        <td class="p-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700"><span class="w-2 h-2 rounded-full bg-slate-400 mr-2"></span>Inactivo</span></td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400">Acme Corp Ltd</td>
+                                        <td class="p-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-900"><span class="w-2 h-2 rounded-full bg-amber-500 mr-2"></span>Inactivo</span></td>
                                         <td class="p-4">
                                             <button onclick="toggleCollapse('skills-ag4')" class="text-xs text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 font-bold focus:outline-none">Ver Habilidades ▼</button>
                                             <div id="skills-ag4" class="hidden mt-2 flex flex-wrap gap-1 max-w-xs transition-all duration-300">
-                                                <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[11px] text-slate-600 dark:text-slate-400">Web Scraper Tool</span>
+                                                <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[11px] text-slate-600 dark:text-slate-400">PDF Neural Reader</span>
                                             </div>
                                         </td>
                                         <td class="p-4 text-right relative">
@@ -306,82 +312,77 @@
                 </section>
 
                 <section id="section-skills" class="tab-content hidden space-y-6">
-                    <div class="p-4 bg-indigo-50 dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/60 rounded-xl text-xs sm:text-sm text-indigo-800 dark:text-indigo-300 shadow-2xs">
-                        💡 <strong>¿Qué es una Skill?</strong> En el ecosistema técnico de AgentHub, una skill representa una capacidad modular atómica empaquetada. Estas herramientas permiten a los agentes interactuar con APIs externas, bases de datos aisladas o modelos de visión especializados sin alterar el core del LLM base.
+                    <div class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900 p-4 rounded-xl">
+                        <h4 class="text-sm font-bold text-indigo-800 dark:text-indigo-300 flex items-center gap-2">
+                            💡 ¿Qué es una Skill en AgentHub?
+                        </h4>
+                        <p class="text-xs text-indigo-700 dark:text-indigo-400 mt-1 leading-relaxed">
+                            Las habilidades (Skills) representan las capacidades técnicas modulares e inyecciones de código de herramientas de automatización de datos, procesamiento neural y conectores que pueden agregarse a los agentes inteligentes para extender sus funciones nativas y optimizar los flujos empresariales.
+                        </p>
                     </div>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                        <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">Web Scraper Tool</h4>
-                                    <div class="relative">
-                                        <button onclick="toggleDropdown(event, 'drop-s1')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">⋮</button>
-                                        <div id="drop-s1" class="dropdown-menu hidden absolute right-0 mt-1 w-32 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10">
-                                            <button onclick="alert('Detalles de Web Scraper')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700">👁️ Detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Permite la extracción automatizada y estructuración de datos HTML crudos en esquemas JSON limpios.</p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs">
-                                <span class="text-slate-400">Agentes activos:</span>
-                                <span class="font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded">2 habilitados</span>
-                            </div>
-                        </div>
-                        <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">PDF Neural Reader</h4>
-                                    <div class="relative">
-                                        <button onclick="toggleDropdown(event, 'drop-s2')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">⋮</button>
-                                        <div id="drop-s2" class="dropdown-menu hidden absolute right-0 mt-1 w-32 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10">
-                                            <button onclick="alert('Detalles de PDF Reader')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700">👁️ Detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Mapeo OCR avanzado de tablas complejas incrustadas dentro de archivos PDF bancarios y de seguros.</p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs">
-                                <span class="text-slate-400">Agentes activos:</span>
-                                <span class="font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded">1 habilitados</span>
-                            </div>
-                        </div>
-                        <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">SQL Automation</h4>
-                                    <div class="relative">
-                                        <button onclick="toggleDropdown(event, 'drop-s3')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">⋮</button>
-                                        <div id="drop-s3" class="dropdown-menu hidden absolute right-0 mt-1 w-32 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10">
-                                            <button onclick="alert('Detalles de SQL Automation')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700">👁️ Detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Generación dinámica de consultas ANSI SQL seguras con capacidades nativas de auto-tuning.</p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs">
-                                <span class="text-slate-400">Agentes activos:</span>
-                                <span class="font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded">1 habilitados</span>
-                            </div>
-                        </div>
-                        <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="font-bold text-sm sm:text-base text-slate-900 dark:text-white">Image Classify API</h4>
-                                    <div class="relative">
-                                        <button onclick="toggleDropdown(event, 'drop-s4')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">⋮</button>
-                                        <div id="drop-s4" class="dropdown-menu hidden absolute right-0 mt-1 w-32 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10">
-                                            <button onclick="alert('Detalles de Image Classify')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700">👁️ Detalles</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Clasificación computacional distribuida y etiquetado de elementos de seguridad en tiempo real.</p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs">
-                                <span class="text-slate-400">Agentes activos:</span>
-                                <span class="font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded">1 habilitados</span>
-                            </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <div class="overflow-x-auto w-full">
+                            <table class="w-full text-left border-collapse min-w-[700px]">
+                                <thead>
+                                    <tr class="bg-slate-50 dark:bg-slate-800/40 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
+                                        <th class="p-4">Nombre de la Skill</th>
+                                        <th class="p-4">Descripción Funcional</th>
+                                        <th class="p-4">Agentes Habilitados</th>
+                                        <th class="p-4 text-right">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 font-semibold">Web Scraper Tool</td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400">Extracción y estructuración automatizada de datos desde portales corporativos.</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs">1 Agente</span></td>
+                                        <td class="p-4 text-right relative">
+                                            <button onclick="toggleDropdown(event, 'drop-s1')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
+                                            <div id="drop-s1" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                                <button onclick="openSkillModal('Web Scraper Tool', 'Extracción y estructuración automatizada de datos desde portales corporativos complejos. Soporta rendering dinámico de JavaScript y bypass de protecciones básicas.', '1 Agente')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="alert('Skill eliminada')" class="w-full px-4 py-2 text-xs text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 font-medium">🗑️ Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 font-semibold">PDF Neural Reader</td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400">Lectura profunda mediante modelos de lenguaje integrados para parsear PDFs.</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs">2 Agentes</span></td>
+                                        <td class="p-4 text-right relative">
+                                            <button onclick="toggleDropdown(event, 'drop-s2')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
+                                            <div id="drop-s2" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                                <button onclick="openSkillModal('PDF Neural Reader', 'Lectura profunda mediante modelos de visión y lenguaje integrados para parsear facturas, contratos y reportes corporativos en PDF sin estructura fija.', '2 Agentes')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="alert('Skill eliminada')" class="w-full px-4 py-2 text-xs text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 font-medium">🗑️ Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 font-semibold">SQL Automation Engine</td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400">Optimización, auditoría y análisis predictivo de queries en DBs distribuidas.</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs">1 Agente</span></td>
+                                        <td class="p-4 text-right relative">
+                                            <button onclick="toggleDropdown(event, 'drop-s3')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
+                                            <div id="drop-s3" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                                <button onclick="openSkillModal('SQL Automation Engine', 'Ejecuta optimizaciones avanzadas sobre bases de datos relacionales y distribuidas masivas analizando de forma predictiva la creación e indexación de tablas.', '1 Agente')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="alert('Skill eliminada')" class="w-full px-4 py-2 text-xs text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 font-medium">🗑️ Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 font-semibold">Image Classification API</td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400">Clasificación de imágenes satelitales y flujos de video con alertas térmicas.</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs">1 Agente</span></td>
+                                        <td class="p-4 text-right relative">
+                                            <button onclick="toggleDropdown(event, 'drop-s4')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
+                                            <div id="drop-s4" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
+                                                <button onclick="openSkillModal('Image Classification API', 'Clasificación automatizada mediante redes neuronales convolucionales aplicadas a imágenes satelitales y flujos de video continuos.', '1 Agente')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="alert('Skill eliminada')" class="w-full px-4 py-2 text-xs text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 font-medium">🗑️ Eliminar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </section>
@@ -389,67 +390,62 @@
                 <section id="section-contrataciones" class="tab-content hidden">
                     <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
                         <div class="overflow-x-auto w-full">
-                            <table class="w-full text-left border-collapse min-w-[750px]">
+                            <table class="w-full text-left border-collapse min-w-[700px]">
                                 <thead>
                                     <tr class="bg-slate-50 dark:bg-slate-800/40 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
-                                        <th class="p-4">Cliente / Sponsor</th>
-                                        <th class="p-4">Agente Contratado</th>
-                                        <th class="p-4">Habilidades Activas</th>
-                                        <th class="p-4">Ventana Temporal</th>
-                                        <th class="p-4">Total Abonado</th>
+                                        <th class="p-4">Cliente</th>
+                                        <th class="p-4">Agente Inteligente</th>
+                                        <th class="p-4">Vigencia (Inicio / Fin)</th>
+                                        <th class="p-4">Importe Total</th>
                                         <th class="p-4 text-right">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
                                     <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
                                         <td class="p-4 font-semibold">Stark Industries</td>
-                                        <td class="p-4 text-slate-600 dark:text-slate-400">CyberScribe v4</td>
-                                        <td class="p-4"><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded font-medium">2 Habilidades</span></td>
-                                        <td class="p-4 text-xs text-slate-500">01/06/2026 - Presente</td>
-                                        <td class="p-4 font-bold text-emerald-600 dark:text-emerald-400">$1,450.00</td>
+                                        <td class="p-4">CyberScribe v4</td>
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400">01/01/2026 - 31/12/2026</td>
+                                        <td class="p-4 font-medium text-emerald-500">$12,500.00</td>
                                         <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-c1')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-c1" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openContractModal('Stark Industries', 'CyberScribe v4', 'Web Scraper Tool ($650.00) y PDF Neural Reader ($800.00)', '$1,450.00')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">🧾 Ver detalle</button>
+                                                <button onclick="openContractModal('Stark Industries', 'CyberScribe v4', '01/01/2026', '31/12/2026', '$12,500.00', '<li>• Base Agent Core Architecture: $7,500.00</li><li>• Web Scraper Tool Skill Extension: $2,500.00</li><li>• PDF Neural Reader Skill Extension: $2,500.00</li>')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
                                         <td class="p-4 font-semibold">Acme Corp Ltd</td>
-                                        <td class="p-4 text-slate-600 dark:text-slate-400">AlphaMiner v2</td>
-                                        <td class="p-4"><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded font-medium">1 Habilidades</span></td>
-                                        <td class="p-4 text-xs text-slate-500">12/05/2026 - 12/11/2026</td>
-                                        <td class="p-4 font-bold text-emerald-600 dark:text-emerald-400">$950.00</td>
+                                        <td class="p-4">AlphaMiner v2</td>
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400">15/02/2026 - 15/02/2027</td>
+                                        <td class="p-4 font-medium text-emerald-500">$9,800.00</td>
                                         <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-c2')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-c2" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openContractModal('Acme Corp Ltd', 'AlphaMiner v2', 'SQL Automation Engine ($950.00)', '$950.00')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">🧾 Ver detalle</button>
+                                                <button onclick="openContractModal('Acme Corp Ltd', 'AlphaMiner v2', '15/02/2026', '15/02/2027', '$9,800.00', '<li>• Base Agent Core Architecture: $6,000.00</li><li>• SQL Automation Engine Skill Extension: $3,800.00</li>')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
                                         <td class="p-4 font-semibold">Wayne Enterprises</td>
-                                        <td class="p-4 text-slate-600 dark:text-slate-400">NexusVision o1</td>
-                                        <td class="p-4"><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded font-medium">1 Habilidades</span></td>
-                                        <td class="p-4 text-xs text-slate-500">20/04/2026 - Presente</td>
-                                        <td class="p-4 font-bold text-emerald-600 dark:text-emerald-400 font-mono">$2,100.00</td>
+                                        <td class="p-4">NexusVision o1</td>
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400">01/03/2026 - 01/09/2026</td>
+                                        <td class="p-4 font-medium text-emerald-500">$15,000.00</td>
                                         <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-c3')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-c3" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openContractModal('Wayne Enterprises', 'NexusVision o1', 'Image Classification API ($2,100.00)', '$2,100.00')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">🧾 Ver detalle</button>
+                                                <button onclick="openContractModal('Wayne Enterprises', 'NexusVision o1', '01/03/2026', '01/09/2026', '$15,000.00', '<li>• Base Agent Core Architecture: $10,000.00</li><li>• Image Classification API Skill Extension: $5,000.00</li>')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
-                                        <td class="p-4 font-semibold">Cyberdyne Systems</td>
-                                        <td class="p-4 text-slate-600 dark:text-slate-400">LogiBot Prime</td>
-                                        <td class="p-4"><span class="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded font-medium">1 Habilidades</span></td>
-                                        <td class="p-4 text-xs text-slate-500">01/01/2026 - 01/07/2026</td>
-                                        <td class="p-4 font-bold text-emerald-600 dark:text-emerald-400">$600.00</td>
+                                        <td class="p-4 font-semibold">Acme Corp Ltd</td>
+                                        <td class="p-4">LogiBot Prime</td>
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400">10/04/2026 - 10/10/2026</td>
+                                        <td class="p-4 font-medium text-emerald-500">$7,980.00</td>
                                         <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-c4')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-c4" class="dropdown-menu hidden absolute right-4 mt-1 w-36 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openContractModal('Cyberdyne Systems', 'LogiBot Prime', 'Web Scraper Tool ($600.00)', '$600.00')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">🧾 Ver detalle</button>
+                                                <button onclick="openContractModal('Acme Corp Ltd', 'LogiBot Prime', '10/04/2026', '10/10/2026', '$7,980.00', '<li>• Base Agent Core Architecture: $5,480.00</li><li>• PDF Neural Reader Skill Extension: $2,500.00</li>')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -462,92 +458,92 @@
                 <section id="section-errores" class="tab-content hidden">
                     <div class="bg-white dark:bg-slate-900 rounded-xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
                         <div class="overflow-x-auto w-full">
-                            <table class="w-full text-left border-collapse min-w-[750px]">
+                            <table class="w-full text-left border-collapse min-w-[700px]">
                                 <thead>
                                     <tr class="bg-slate-50 dark:bg-slate-800/40 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
                                         <th class="p-4">Timestamp</th>
-                                        <th class="p-4">Identificador Agente</th>
-                                        <th class="p-4">Severidad / Tipo</th>
-                                        <th class="p-4">Descripción Corta</th>
+                                        <th class="p-4">Agente</th>
+                                        <th class="p-4">Tipo de Error</th>
+                                        <th class="p-4">Descripción Breve</th>
                                         <th class="p-4 text-right">Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm font-mono">
-                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
-                                        <td class="p-4 text-xs text-slate-400">2026-06-22 09:12:04</td>
-                                        <td class="p-4 font-sans font-semibold text-slate-800 dark:text-slate-200">CyberScribe v4</td>
-                                        <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900">Fatal / Crash</span></td>
-                                        <td class="p-4 text-slate-500 dark:text-slate-400 max-w-xs truncate font-sans">403 Forbidden token sequence execution timeout.</td>
-                                        <td class="p-4 text-right relative font-sans">
+                                <tbody id="error-log-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+                                    <tr id="err-row-1" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400 font-mono">2026-06-22 10:14:02</td>
+                                        <td class="p-4 font-semibold">CyberScribe v4</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900">CRITICAL</span></td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400 truncate max-w-xs">Timeout excedido en el handshake del portal objetivo.</td>
+                                        <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-e1')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-e1" class="dropdown-menu hidden absolute right-4 mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openErrorModal('CyberScribe v4', 'CRITICAL STACKTRACE: Remote endpoint rejected secure handshake. Exception at WebScraper.ts:204:12')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🔍 Ver Stacktrace</button>
-                                                <button onclick="alert('Marcado como resuelto')" class="w-full px-4 py-2 text-xs text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 font-medium">✓ Marcar Resuelto</button>
+                                                <button onclick="openErrorModal('2026-06-22 10:14:02', 'CyberScribe v4', 'HTTP Timeout Error 504: The upstream scrap target gateway dropped connections during scraping sequence.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="resolveError('err-row-1')" class="w-full px-4 py-2 text-xs text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 font-medium">✅ Marcar resuelto</button>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
-                                        <td class="p-4 text-xs text-slate-400">2026-06-22 08:45:11</td>
-                                        <td class="p-4 font-sans font-semibold text-slate-800 dark:text-slate-200">CyberScribe v4</td>
-                                        <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-900">Warning</span></td>
-                                        <td class="p-4 text-slate-500 dark:text-slate-400 max-w-xs truncate font-sans">Rate Limit reached on cognitive services.</td>
-                                        <td class="p-4 text-right relative font-sans">
+                                    <tr id="err-row-2" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400 font-mono">2026-06-22 09:45:11</td>
+                                        <td class="p-4 font-semibold">LogiBot Prime</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-900">WARNING</span></td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400 truncate max-w-xs">Estructura de PDF no reconocida en el parseo neural.</td>
+                                        <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-e2')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-e2" class="dropdown-menu hidden absolute right-4 mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openErrorModal('CyberScribe v4', 'WARNING: API returned HTTP 429. Backing off for 4500ms.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🔍 Ver Stacktrace</button>
-                                                <button onclick="alert('Marcado como resuelto')" class="w-full px-4 py-2 text-xs text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 font-medium">✓ Marcar Resuelto</button>
+                                                <button onclick="openErrorModal('2026-06-22 09:45:11', 'LogiBot Prime', 'NeuralParsingWarning: Confidence score dropped below 0.65 due to unrecognized layout structure.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="resolveError('err-row-2')" class="w-full px-4 py-2 text-xs text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 font-medium">✅ Marcar resuelto</button>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
-                                        <td class="p-4 text-xs text-slate-400">2026-06-21 23:01:59</td>
-                                        <td class="p-4 font-sans font-semibold text-slate-800 dark:text-slate-200">AlphaMiner v2</td>
-                                        <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-900">Warning</span></td>
-                                        <td class="p-4 text-slate-500 dark:text-slate-400 max-w-xs truncate font-sans">Slow query execution on analytical node 4.</td>
-                                        <td class="p-4 text-right relative font-sans">
+                                    <tr id="err-row-3" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400 font-mono">2026-06-22 08:30:00</td>
+                                        <td class="p-4 font-semibold">AlphaMiner v2</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-900">INFO</span></td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400 truncate max-w-xs">Reindexación preventiva completada con éxito.</td>
+                                        <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-e3')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-e3" class="dropdown-menu hidden absolute right-4 mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openErrorModal('AlphaMiner v2', 'SLOW QUERY: Cluster synchronization delay exceeded 1200ms.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🔍 Ver Stacktrace</button>
-                                                <button onclick="alert('Marcado como resuelto')" class="w-full px-4 py-2 text-xs text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 font-medium">✓ Marcar Resuelto</button>
+                                                <button onclick="openErrorModal('2026-06-22 08:30:00', 'AlphaMiner v2', 'DatabaseOptimizationInfo: Successfully built and applied missing indexes to distributed catalog tables.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="resolveError('err-row-3')" class="w-full px-4 py-2 text-xs text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 font-medium">✅ Marcar resuelto</button>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
-                                        <td class="p-4 text-xs text-slate-400">2026-06-21 14:15:20</td>
-                                        <td class="p-4 font-sans font-semibold text-slate-800 dark:text-slate-200">NexusVision o1</td>
-                                        <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-900">Info</span></td>
-                                        <td class="p-4 text-slate-500 dark:text-slate-400 max-w-xs truncate font-sans">Model hot-reload initialized successfully.</td>
-                                        <td class="p-4 text-right relative font-sans">
+                                    <tr id="err-row-4" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400 font-mono">2026-06-22 07:12:44</td>
+                                        <td class="p-4 font-semibold">NexusVision o1</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-900">WARNING</span></td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400 truncate max-w-xs">Frame-drop detectado en la API de streaming continuo.</td>
+                                        <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-e4')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-e4" class="dropdown-menu hidden absolute right-4 mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openErrorModal('NexusVision o1', 'INFO: Weights swapped dynamically without instance downtime.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🔍 Ver Stacktrace</button>
-                                                <button onclick="alert('Marcado como resuelto')" class="w-full px-4 py-2 text-xs text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 font-medium">✓ Marcar Resuelto</button>
+                                                <button onclick="openErrorModal('2026-06-22 07:12:44', 'NexusVision o1', 'StreamWarning: 12 frames dropped due to high server response latency from external satellite feed API.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="resolveError('err-row-4')" class="w-full px-4 py-2 text-xs text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 font-medium">✅ Marcar resuelto</button>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
-                                        <td class="p-4 text-xs text-slate-400">2026-06-20 18:22:10</td>
-                                        <td class="p-4 font-sans font-semibold text-slate-800 dark:text-slate-200">LogiBot Prime</td>
-                                        <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900">Fatal / Crash</span></td>
-                                        <td class="p-4 text-slate-500 dark:text-slate-400 max-w-xs truncate font-sans">Database pool connections exhausted completely.</td>
-                                        <td class="p-4 text-right relative font-sans">
+                                    <tr id="err-row-5" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400 font-mono">2026-06-21 23:55:19</td>
+                                        <td class="p-4 font-semibold">CyberScribe v4</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900">CRITICAL</span></td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400 truncate max-w-xs">Falla de autenticación: Credencial corporativa rotada u obsoleta.</td>
+                                        <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-e5')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-e5" class="dropdown-menu hidden absolute right-4 mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openErrorModal('LogiBot Prime', 'FATAL EXCEPTION: Pool max size (50) reached during batch run.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🔍 Ver Stacktrace</button>
-                                                <button onclick="alert('Marcado como resuelto')" class="w-full px-4 py-2 text-xs text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 font-medium">✓ Marcar Resuelto</button>
+                                                <button onclick="openErrorModal('2026-06-21 23:55:19', 'CyberScribe v4', 'AuthCriticalError: Access Token rejected by enterprise gateway. Credenciales corporativas inválidas.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="resolveError('err-row-5')" class="w-full px-4 py-2 text-xs text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 font-medium">✅ Marcar resuelto</button>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
-                                        <td class="p-4 text-xs text-slate-400">2026-06-19 11:04:33</td>
-                                        <td class="p-4 font-sans font-semibold text-slate-800 dark:text-slate-200">AlphaMiner v2</td>
-                                        <td class="p-4"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-900">Warning</span></td>
-                                        <td class="p-4 text-slate-500 dark:text-slate-400 max-w-xs truncate font-sans">Malformed configuration payload bypassed.</td>
-                                        <td class="p-4 text-right relative font-sans">
+                                    <tr id="err-row-6" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20">
+                                        <td class="p-4 text-xs text-slate-500 dark:text-slate-400 font-mono">2026-06-21 18:22:10</td>
+                                        <td class="p-4 font-semibold">LogiBot Prime</td>
+                                        <td class="p-4"><span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900">CRITICAL</span></td>
+                                        <td class="p-4 text-slate-500 dark:text-slate-400 truncate max-w-xs">Límite de tokens de la API excedido globalmente.</td>
+                                        <td class="p-4 text-right relative">
                                             <button onclick="toggleDropdown(event, 'drop-e6')" class="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg focus:outline-none">⋮</button>
                                             <div id="drop-e6" class="dropdown-menu hidden absolute right-4 mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg py-1 z-10 text-left">
-                                                <button onclick="openErrorModal('AlphaMiner v2', 'WARNING: Config fallback to version 2.1.0 executed safely.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium">🔍 Ver Stacktrace</button>
-                                                <button onclick="alert('Marcado como resuelto')" class="w-full px-4 py-2 text-xs text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 font-medium">✓ Marcar Resuelto</button>
+                                                <button onclick="openErrorModal('2026-06-21 18:22:10', 'LogiBot Prime', 'RateLimitCriticalError: Exceeded API daily limits during logistics file structuring flow.')" class="w-full px-4 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-slate-700 dark:text-slate-200">👁️ Ver detalle</button>
+                                                <button onclick="resolveError('err-row-6')" class="w-full px-4 py-2 text-xs text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 font-medium">✅ Marcar resuelto</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -561,111 +557,151 @@
         </div>
     </div>
 
-    <div id="modal-usuario" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-usuario')">
-        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                <h3 class="font-bold text-base sm:text-lg">Expediente Corporativo</h3>
-                <button onclick="closeModal('modal-usuario')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">✕</button>
+    <div id="modal-usuario" onclick="closeModalOnBackdrop(event, 'modal-usuario')" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-md w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Detalle de Cuenta Corporativa</h3>
+            <div class="space-y-3 text-sm">
+                <p><span class="text-slate-400 font-medium">Empresa:</span> <span id="mu-empresa" class="font-semibold text-slate-800 dark:text-slate-200"></span></p>
+                <p><span class="text-slate-400 font-medium">Email:</span> <span id="mu-email" class="text-slate-600 dark:text-slate-400"></span></p>
+                <p><span class="text-slate-400 font-medium">Plan Suscrito:</span> <span id="mu-plan" class="font-medium text-indigo-500"></span></p>
+                <p><span class="text-slate-400 font-medium">Estado actual:</span> <span id="mu-estado" class="font-medium"></span></p>
             </div>
-            <div class="p-5 space-y-3 text-sm">
-                <p><strong>Compañía:</strong> <span id="mu-nombre"></span></p>
-                <p><strong>Contacto Principal:</strong> <span id="mu-email"></span></p>
-                <p><strong>Plan Asignado:</strong> <span id="mu-plan"></span></p>
-                <p><strong>Estado Operativo:</strong> <span id="mu-estado"></span></p>
-            </div>
-            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 text-right">
-                <button onclick="closeModal('modal-usuario')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Cerrar Ventana</button>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeModal('modal-usuario')" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold transition-all">Cerrar</button>
             </div>
         </div>
     </div>
 
-    <div id="modal-agente" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-agente')">
-        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-lg w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                <h3 class="font-bold text-base sm:text-lg">Configuración Interna</h3>
-                <button onclick="closeModal('modal-agente')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">✕</button>
+    <div id="modal-config" onclick="closeModalOnBackdrop(event, 'modal-config')" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Configuración Estructural</h3>
+            <p class="text-xs text-slate-400 mb-4">Inyección y edición del System Prompt para el agente: <span id="mc-agente" class="font-bold text-indigo-500"></span></p>
+            <div>
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">System Instructions / Prompts</label>
+                <textarea id="mc-prompt" rows="5" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-3 text-xs font-mono focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-200"></textarea>
             </div>
-            <div class="p-5 space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Identificador de Instancia</label>
-                    <input type="text" id="ma-nombre" readonly class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2.5 rounded-lg text-sm font-semibold outline-none">
+            <div class="mt-6 flex justify-end space-x-2">
+                <button onclick="closeModal('modal-config')" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold transition-all">Cancelar</button>
+                <button onclick="alert('Instrucciones guardadas con éxito en el agente.'); closeModal('modal-config')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold shadow-md transition-all">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-skill" onclick="closeModalOnBackdrop(event, 'modal-skill')" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-md w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Ficha Técnica de la Skill</h3>
+            <div class="space-y-3 text-sm">
+                <p><span class="text-slate-400 font-medium">Nombre:</span> <span id="ms-nombre" class="font-semibold text-slate-800 dark:text-slate-200"></span></p>
+                <p><span class="text-slate-400 font-medium">Definición:</span> <span id="ms-definicion" class="text-slate-600 dark:text-slate-400 leading-relaxed block mt-1"></span></p>
+                <p><span class="text-slate-400 font-medium">Uso Global:</span> <span id="ms-uso" class="font-medium text-indigo-500"></span></p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeModal('modal-skill')" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold transition-all">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-contrato" onclick="closeModalOnBackdrop(event, 'modal-contrato')" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-md w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Desgloses del Contrato</h3>
+            <div class="space-y-3 text-sm">
+                <p><span class="text-slate-400 font-medium">Cliente:</span> <span id="mco-cliente" class="font-semibold text-slate-800 dark:text-slate-200"></span></p>
+                <p><span class="text-slate-400 font-medium">Agente:</span> <span id="mco-agente" class="font-semibold text-indigo-400"></span></p>
+                <p><span class="text-slate-400 font-medium">Vigencia:</span> <span id="mco-fechas" class="text-slate-600 dark:text-slate-400"></span></p>
+                <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Desglose de Precios Individuales</span>
+                    <ul id="mco-items" class="space-y-1 text-xs font-mono text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950 p-2 rounded-lg"></ul>
                 </div>
+                <p class="border-t border-slate-200 dark:border-slate-800 pt-3 flex justify-between font-bold text-base"><span class="text-slate-800 dark:text-white">Importe Total Paid:</span> <span id="mco-total" class="text-emerald-500"></span></p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeModal('modal-contrato')" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold transition-all">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-error" onclick="closeModalOnBackdrop(event, 'modal-error')" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Inspección de Excepciones</h3>
+            <div class="space-y-3 text-sm">
+                <p><span class="text-slate-400 font-medium">Ocurrido el:</span> <span id="me-time" class="font-mono text-slate-600 dark:text-slate-400"></span></p>
+                <p><span class="text-slate-400 font-medium">Origen:</span> <span id="me-agente" class="font-semibold text-slate-800 dark:text-slate-200"></span></p>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">System Prompt Base (Editable)</label>
-                    <textarea id="ma-prompt" rows="5" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 p-2.5 rounded-lg text-sm font-mono outline-none focus:border-indigo-500"></textarea>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Stacktrace / Registro técnico</span>
+                    <div id="me-stack" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-3 text-xs font-mono text-rose-500 overflow-x-auto whitespace-pre-wrap leading-relaxed"></div>
                 </div>
             </div>
-            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 flex justify-end space-x-2">
-                <button onclick="closeModal('modal-agente')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Cancelar</button>
-                <button onclick="alert('Prompt actualizado localmente'); closeModal('modal-agente');" class="px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-lg shadow-sm">Guardar Cambios</button>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeModal('modal-error')" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold transition-all">Cerrar</button>
             </div>
         </div>
     </div>
-
-    <div id="modal-contrato" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-contrato')">
-        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                <h3 class="font-bold text-base sm:text-lg">Desglose de Facturación Comercial</h3>
-                <button onclick="closeModal('modal-contrato')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">✕</button>
-            </div>
-            <div class="p-5 space-y-3 text-sm">
-                <p><strong>Cliente Titular:</strong> <span id="mc-cliente"></span></p>
-                <p><strong>Instancia IA:</strong> <span id="mc-agente"></span></p>
-                <p><strong>Skills y Precios Unitarios:</strong></p>
-                <div class="p-3 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800 text-xs font-mono text-slate-600 dark:text-slate-400" id="mc-desglose"></div>
-                <p class="text-base font-bold pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-between"><span>Monto Total Cobrado:</span><span class="text-emerald-500" id="mc-total"></span></p>
-            </div>
-            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 text-right">
-                <button onclick="closeModal('modal-contrato')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Cerrar Auditoría</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-error" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-error')">
-        <div class="bg-white dark:bg-slate-900 rounded-xl max-w-lg w-full shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
-            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                <h3 class="font-bold text-base sm:text-lg">Excepción en Runtime</h3>
-                <button onclick="closeModal('modal-error')" class="text-slate-400 hover:text-slate-600 font-bold focus:outline-none">✕</button>
-            </div>
-            <div class="p-5 space-y-3">
-                <p class="text-sm"><strong>Componente Emisor:</strong> <span id="me-agente" class="font-semibold"></span></p>
-                <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Stacktrace Volcado</label>
-                    <div id="me-stack" class="w-full bg-slate-950 text-rose-400 p-4 rounded-lg text-xs font-mono overflow-x-auto border border-slate-800"></div>
-                </div>
-            </div>
-            <div class="p-4 bg-slate-50 dark:bg-slate-800/40 text-right">
-                <button onclick="closeModal('modal-error')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-xs font-semibold rounded-lg">Cerrar Detalle</button>
-            </div>
-        </div>
-    </div>
-
 
     <script>
-        // --- NAVEGACIÓN Y MENU LATERAL RESPONSIVE ---
+        // --- MANEJO DEL MODO OSCURO (NATIVO CON TAILWIND) ---
+        function setTheme(isDark, persist = true) {
+            const html = document.documentElement;
+            const dot = document.getElementById('dark-mode-dot');
+
+            if (isDark) {
+                html.classList.add('dark');
+                dot.classList.remove('translate-x-1');
+                dot.classList.add('translate-x-6');
+            } else {
+                html.classList.remove('dark');
+                dot.classList.remove('translate-x-6');
+                dot.classList.add('translate-x-1');
+            }
+
+            if (persist) {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+        }
+
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const shouldUseDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+            setTheme(shouldUseDark, false);
+        }
+
+        // --- MANEJO DEL SIDEBAR RESPONSIVO ---
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebar-overlay');
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
+            const isHidden = sidebar.classList.contains('-translate-x-full');
+            
+            if (isHidden) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
         }
 
+        // --- NAVEGACIÓN Y CAMBIO DE PESTAÑAS (SPA) ---
         function switchTab(tabId) {
-            // Oculta todas las secciones
-            document.querySelectorAll('.tab-content').forEach(section => section.classList.add('hidden'));
-            
-            // Remueve clases activas de todos los botones de navegación
+            // Ocultar todos los contenedores de vista
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Mostrar la pestaña seleccionada
+            document.getElementById('section-' + tabId).classList.remove('hidden');
+
+            // Actualizar estilos activos de los botones del Sidebar
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/10');
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
                 btn.classList.add('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
             });
-            
-            // Activa la sección correspondiente
-            document.getElementById(`section-${tabId}`).classList.remove('hidden');
-            document.getElementById(`nav-${tabId}`).classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/10');
-            document.getElementById(`nav-${tabId}`).classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
-            
-            // Actualiza dinámicamente el título en el topbar según sección activa
+            const activeBtn = document.getElementById('nav-' + tabId);
+            activeBtn.classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+            activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+
+            // Actualizar dinámicamente el título en el header superior
             const titles = {
                 dashboard: 'Dashboard',
                 usuarios: 'Gestión de Usuarios',
@@ -674,59 +710,57 @@
                 contrataciones: 'Contrataciones de Agentes',
                 errores: 'Log de Errores'
             };
-            document.getElementById('topbar-title').innerText = titles[tabId];
-            
-            // Auto-cierra el menú en tabletas o móviles al pulsar una opción
+            document.getElementById('topbar-title').innerText = titles[tabId] || 'Panel';
+
+            // Cerrar sidebar automáticamente en resoluciones móviles al navegar
             if (window.innerWidth < 768) {
                 toggleSidebar();
             }
         }
 
-        // --- CONMUTADOR GLOBAL MODO OSCURO (DARK MODE) ---
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const dot = document.getElementById('dark-mode-dot');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                dot.classList.remove('translate-x-6');
-                dot.classList.add('translate-x-1');
-            } else {
-                html.classList.add('dark');
-                dot.classList.remove('translate-x-1');
-                dot.classList.add('translate-x-6');
-            }
-        }
+        // --- FUNCIONES DINÁMICAS PARA MODALES ---
+        function openModal(id, empresa, email, plan, estado) {
+            document.getElementById('mu-empresa').textContent = empresa;
+            document.getElementById('mu-email').textContent = email;
+            document.getElementById('mu-plan').textContent = plan;
+            document.getElementById('mu-estado').textContent = estado;
 
-        // --- FUNCIONES INTERACTIVAS DE APERTURA DE MODALES ---
-        function openModal(id, nombre, email, plan, estado) {
-            closeAllDropdowns();
-            document.getElementById('mu-nombre').innerText = nombre;
-            document.getElementById('mu-email').innerText = email;
-            document.getElementById('mu-plan').innerText = plan;
-            document.getElementById('mu-estado').innerText = estado;
+            // Manejo estético del badge del estado dentro del modal
+            const elEstado = document.getElementById('mu-estado');
+            elEstado.className = "font-medium px-2 py-0.5 rounded-full text-xs ";
+            if (estado === 'Activo') elEstado.className += "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300";
+            else if (estado === 'Suspendido') elEstado.className += "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300";
+            else elEstado.className += "bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300";
+
             document.getElementById(id).classList.remove('hidden');
         }
 
-        function openConfigModal(nombre, promptText) {
-            closeAllDropdowns();
-            document.getElementById('ma-nombre').value = nombre;
-            document.getElementById('ma-prompt').value = promptText;
-            document.getElementById('modal-agente').classList.remove('hidden');
+        function openConfigModal(agente, prompt) {
+            document.getElementById('mc-agente').textContent = agente;
+            document.getElementById('mc-prompt').value = prompt;
+            document.getElementById('modal-config').classList.remove('hidden');
         }
 
-        function openContractModal(cliente, agente, desglose, total) {
-            closeAllDropdowns();
-            document.getElementById('mc-cliente').innerText = cliente;
-            document.getElementById('mc-agente').innerText = agente;
-            document.getElementById('mc-desglose').innerText = desglose;
-            document.getElementById('mc-total').innerText = total;
+        function openSkillModal(nombre, definicion, uso) {
+            document.getElementById('ms-nombre').textContent = nombre;
+            document.getElementById('ms-definicion').textContent = definicion;
+            document.getElementById('ms-uso').textContent = uso;
+            document.getElementById('modal-skill').classList.remove('hidden');
+        }
+
+        function openContractModal(cliente, agente, inicio, fin, total, itemsHtml) {
+            document.getElementById('mco-cliente').textContent = cliente;
+            document.getElementById('mco-agente').textContent = agente;
+            document.getElementById('mco-fechas').textContent = inicio + " hasta " + fin;
+            document.getElementById('mco-total').textContent = total;
+            document.getElementById('mco-items').innerHTML = itemsHtml;
             document.getElementById('modal-contrato').classList.remove('hidden');
         }
 
-        function openErrorModal(agente, stacktrace) {
-            closeAllDropdowns();
-            document.getElementById('me-agente').innerText = agente;
-            document.getElementById('me-stack').innerText = stacktrace;
+        function openErrorModal(timestamp, agente, stacktrace) {
+            document.getElementById('me-time').textContent = timestamp;
+            document.getElementById('me-agente').textContent = agente;
+            document.getElementById('me-stack').textContent = stacktrace;
             document.getElementById('modal-error').classList.remove('hidden');
         }
 
@@ -740,7 +774,20 @@
             }
         }
 
-        // --- MANEJO DE DROPDOWNS FLOTANTES ---
+        // --- ACCIÓN EXCLUSIVA: MARCAR ERROR COMO RESUELTO ---
+        function resolveError(rowId) {
+            const row = document.getElementById(rowId);
+            if (row) {
+                row.style.transition = "all 0.4s ease";
+                row.style.opacity = "0";
+                setTimeout(() => {
+                    row.remove();
+                    alert("Excepción marcada como resuelta y removida de la cola de logs activos.");
+                }, 400);
+            }
+        }
+
+        // --- MANEJO GLOBAL DE DROPDOWNS FLOTANTES ---
         function toggleDropdown(event, id) {
             event.stopPropagation();
             const dropdown = document.getElementById(id);
@@ -755,7 +802,7 @@
             document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.add('hidden'));
         }
 
-        // --- MANEJO DE SECCIONES COLAPSABLES (SKILLS INTERNAS) ---
+        // --- SECCIONES COLAPSABLES (SKILLS INTERNAS EN AGENTES) ---
         function toggleCollapse(id) {
             const el = document.getElementById(id);
             el.classList.toggle('hidden');
@@ -763,6 +810,9 @@
 
         // Cierre automático de dropdowns activos al hacer clic en cualquier área libre
         document.addEventListener('click', closeAllDropdowns);
+
+        // Inicialización de tema al cargar la vista
+        initTheme();
     </script>
 </body>
 </html>
