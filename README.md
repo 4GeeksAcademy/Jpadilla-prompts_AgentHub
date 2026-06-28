@@ -1,41 +1,39 @@
-# HTML Hello
+# 📑 PRUEBA TÉCNICA: ANÁLISIS DE VENTAS Y COMPORTAMIENTO DEL CLIENTE
+**Compañía:** Danta Analytics S.A.  
+**Consultor:** Jorge Andrés Padilla Arias  
+**Fecha de Entrega:** Lunes 29 de junio de 2026  
+**Destinatario:** Dirección de Ventas / Comité Evaluador  
 
-The most basic boilerplate for any 4Geeks Academy student, start your very first website from scratch.
+---
 
-> There is a video tutorial on [how to use this template to create your very first website here](https://youtu.be/dfbDCMu_p-0).
+## 🧭 PARTE 1: COMPRENSIÓN DEL REQUERIMIENTO
 
-## What to do next?
+### 1. Resumen del Requerimiento en Propias Palabras
+El objetivo central consiste en transformar la data histórica transaccional de *"Online Retail II"* en un activo estratégico para la Dirección de Ventas. El análisis persigue tres metas operacionales y comerciales críticas:
+1. **Segmentar la cartera de clientes** bajo una metodología de valor (RFM) para aislar el núcleo que sostiene la rentabilidad.
+2. **Identificar patrones estacionales y geográficos** de consumo.
+3. **Realizar una auditoría de la logística inversa** mediante el mapeo exhaustivo de devoluciones por país y temporalidad.
 
-Create an `index.html` file with the [basic HTML structure](http://4geeks.com/lesson/what-is-html-learn-html#page-structure) and see it live by running a web-server using the following command:
+### 2. Tres Preguntas Clave a Responder con los Datos
+* 📊 ¿Qué proporción de nuestros ingresos totales es generada por el segmento "Champions" (Clientes de alto valor)?
+* 🌍 ¿Existe un patrón estacional o geográfico crítico donde las devoluciones se concentren en meses o países específicos?
+* 📦 ¿Cuáles son los 10 SKU o productos con mayor frecuencia e intensidad de devoluciones?
 
-```bash
-$ pip3 install flask && python3 server.py
-```
+### 3. Estrategia de Abordaje del Análisis
+* **Fase 1 (Ingesta y Calidad):** Limpieza inicial de nulos en orígenes de datos.
+* **Fase 2 (Modelado Dimensional):** Diseño de esquema en estrella en Power BI.
+* **Fase 3 (Cálculo Avanzado RFM):** Clasificación por percentiles dinámicos en DAX.
 
-- You can create as many HTML files as you want.
-- You can also create CSS files and import them into your website using a `<link>` tag placed between the `<head></head>` tags, like this:
+---
 
-```html
-<head>
-  ...
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
-```
+## 📈 PARTE 2: RESUMEN EJECUTIVO Y HALLAZGOS (INSIGHTS)
 
-- If you want to use Tailwind CSS, add it optionally via the official Tailwind CSS v4 CDN inside the same `<head>`:
+### 1. Segmentación RFM
+El **15% de la base de clientes activos** pertenece al segmento *"Champions"*. Este subgrupo estratégico concentra **más del 60% del Revenue total neto** de la compañía.
 
-```html
-<head>
-  ...
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
-```
+### 2. Patrón de Logística Inversa (Devoluciones)
+* 📅 **Estacionalidad:** Pico crítico detectado en **Enero y Febrero**.
+* 🗺️ **Geografía:** Europa continental registra tasas porcentuales de devolución más altas por transacción en comparación al Reino Unido.
 
-### Contributors
-
-This template was built as part of the [Full Stack Developer course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer) at [4Geeks Academy Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and [many other contributors](https://github.com/4GeeksAcademy/html-hello/graphs/contributors).
-
-You can find other templates and resources like this at the [school's GitHub page](https://github.com/4geeksacademy/).
+### 3. Concentración Crítica del Catálogo
+> 💡 **Outlier Detectado:** El producto **SKU 23166 (Medium Ceramic Top Storage Jar)** representa por sí solo el **73.9% de las pérdidas totales por devoluciones** monetarias debido a un evento masivo de cancelación de 74,215 unidades.
